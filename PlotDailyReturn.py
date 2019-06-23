@@ -1,16 +1,11 @@
 import matplotlib.pyplot as plt
-from LoadReturn import LoadReturnData
+from ReturnDataSet import ReturnDataSet
 
 class PlotPriceData:
     
     def PlotDailyPrice():
         print('PlotDailyReturn')
-        ret = LoadReturnData.loadDailyReturn()
-        
-        ret_index = ret.set_index('date')
-        table = ret_index.pivot(columns ='ticker')        
-        
-        table.coulmns = [col[1] for col in table.columns]  
+        table =ReturnDataSet.DeriveReturnDataSet() 
         
         plt.figure (figsize =(14,7))
         for prc in table.columns.values:
